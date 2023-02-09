@@ -193,3 +193,18 @@ error	 2023-02-02 02:50:54 	 wrong details !
 error	 2023-02-03 04:43:52 	 wrong details !
 error	 2023-02-03 04:44:54 	 user not found
 error	 2023-02-03 04:45:22 	 user not found
+error	 2023-02-04 12:36:38 	 wrong details !
+error	 2023-02-04 12:36:45 	 user not found
+error	 2023-02-04 12:39:14 	 user not found
+error	 2023-02-04 12:39:24 	 E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "maya@gmail.com" }
+error	 2023-02-04 12:39:51 	 user not found
+error	 2023-02-04 12:42:54 	 user not found
+error	 2023-02-04 03:11:55 	 user not found
+error	 2023-02-04 03:13:42 	 user not found
+error	 2023-02-04 03:16:17 	 user not found
+error	 2023-02-04 03:23:33 	 user not found
+error	 2023-02-04 03:57:18 	 wrong details !
+error	 2023-02-04 03:57:27 	 user not found
+error	 2023-02-04 04:15:42 	 user not found
+error	 2023-02-04 06:27:26 	 wrong details !
+error	 2023-02-04 06:27:37 	 user not found

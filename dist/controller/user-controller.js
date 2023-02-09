@@ -56,16 +56,22 @@ var dotenv_1 = __importDefault(require("dotenv"));
 var errorModel_1 = __importDefault(require("../models/errorModel"));
 dotenv_1.default.config();
 var register = function (request, response, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var user, isAdmin, newUser;
-    return __generator(this, function (_a) {
-        user = request.body;
-        isAdmin = process.env.ADMINS.includes(user.email);
-        user.role = isAdmin ? user_model_1.Role.ADMIN : user_model_1.Role.COSTUMER;
-        newUser = new user_model_1.UserModel(__assign({ _id: new mongoose_1.default.Types.ObjectId() }, user));
-        return [2 /*return*/, newUser
-                .save()
-                .then(function (user) { return response.status(201).json(user); })
-                .catch(function (err) { return next(err); })];
+    var user, isAdmin, newUser, _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                user = request.body;
+                isAdmin = process.env.ADMINS.includes(user.email);
+                user.role = isAdmin ? user_model_1.Role.ADMIN : user_model_1.Role.COSTUMER;
+                _a = user_model_1.UserModel.bind;
+                return [4 /*yield*/, __assign({ _id: new mongoose_1.default.Types.ObjectId() }, user)];
+            case 1:
+                newUser = new (_a.apply(user_model_1.UserModel, [void 0, _b.sent()]))();
+                return [2 /*return*/, newUser
+                        .save()
+                        .then(function (user) { return response.status(201).json(user); })
+                        .catch(function (err) { return next(err); })];
+        }
     });
 }); };
 var login = function (request, response, next) { return __awaiter(void 0, void 0, void 0, function () {

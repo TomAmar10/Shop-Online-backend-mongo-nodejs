@@ -55,12 +55,16 @@ var cart_model_1 = require("../models/cart-model");
 var addCart = function (request, response, next) { return __awaiter(void 0, void 0, void 0, function () {
     var cart, newCart;
     return __generator(this, function (_a) {
-        cart = request.body;
-        newCart = new cart_model_1.CartModel(__assign({ _id: new mongoose_1.default.Types.ObjectId() }, cart));
-        return [2 /*return*/, newCart
-                .save()
-                .then(function (cart) { return response.status(201).json(cart); })
-                .catch(function (err) { return next(err); })];
+        switch (_a.label) {
+            case 0:
+                cart = request.body;
+                newCart = new cart_model_1.CartModel(__assign({ _id: new mongoose_1.default.Types.ObjectId() }, cart));
+                return [4 /*yield*/, newCart.populate(["userId", "items"])];
+            case 1: return [2 /*return*/, (_a.sent())
+                    .save()
+                    .then(function (cart) { return response.status(201).json(cart); })
+                    .catch(function (err) { return next(err); })];
+        }
     });
 }); };
 var getCart = function (request, response, next) { return __awaiter(void 0, void 0, void 0, function () {

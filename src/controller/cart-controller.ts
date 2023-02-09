@@ -12,7 +12,7 @@ const addCart = async (
     _id: new mongoose.Types.ObjectId(),
     ...cart,
   });
-  return newCart
+  return (await newCart.populate(["userId", "items"]))
     .save()
     .then((cart) => response.status(201).json(cart))
     .catch((err) => next(err));

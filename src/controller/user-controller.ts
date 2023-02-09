@@ -13,10 +13,12 @@ const register = async (
   const user = request.body;
   const isAdmin = process.env.ADMINS.includes(user.email);
   user.role = isAdmin ? Role.ADMIN : Role.COSTUMER;
-  const newUser = new UserModel({
-    _id: new mongoose.Types.ObjectId(),
-    ...user,
-  });
+  const newUser = new UserModel(
+    await {
+      _id: new mongoose.Types.ObjectId(),
+      ...user,
+    }
+  );
   return newUser
     .save()
     .then((user) => response.status(201).json(user))
