@@ -26,17 +26,11 @@ mongoose
 dotenv.config();
 const server = express();
 
-server.use(cors());
+const corsOptions = {
+  exposedHeaders: "authorization",
+};
+server.use(cors(corsOptions));
 server.use(express.json());
-
-server.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  next();
-});
 
 server.use("/api/users", UserRouter);
 server.use("/api/categories", CategoryRouter);
