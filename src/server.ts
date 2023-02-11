@@ -33,7 +33,6 @@ server.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-// server.use(cors());
 server.use(express.json());
 
 server.use("/api/users", UserRouter);
