@@ -26,10 +26,14 @@ mongoose
 dotenv.config();
 const server = express();
 
-// const corsOptions = {
-  // exposedHeaders: "authorization",
-// };
-server.use(cors());
+server.use(
+  cors({
+    origin: "https://shop-online-ta7.netlify.app",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+// server.use(cors());
 server.use(express.json());
 
 server.use("/api/users", UserRouter);
