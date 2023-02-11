@@ -26,10 +26,10 @@ mongoose
 dotenv.config();
 const server = express();
 
-const corsOptions = {
-  exposedHeaders: "authorization",
-};
-server.use(cors(corsOptions));
+// const corsOptions = {
+  // exposedHeaders: "authorization",
+// };
+server.use(cors());
 server.use(express.json());
 
 server.use("/api/users", UserRouter);
