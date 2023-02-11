@@ -102,6 +102,34 @@ var getUser = function (request, response, next) { return __awaiter(void 0, void
                 .catch(function (err) { return next(err); })];
     });
 }); };
+var checkUserId = function (request, response, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var id_number;
+    return __generator(this, function (_a) {
+        id_number = request.params.id;
+        return [2 /*return*/, user_model_1.UserModel.findOne({ id_number: id_number })
+                .then(function (user) {
+                if (user)
+                    throw new errorModel_1.default(401, "Id is already exist");
+                else
+                    response.status(200).json({ message: "No user found" });
+            })
+                .catch(function (err) { return next(err); })];
+    });
+}); };
+var checkUserEmail = function (request, response, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var email;
+    return __generator(this, function (_a) {
+        email = request.params.email;
+        return [2 /*return*/, user_model_1.UserModel.findOne({ email: email })
+                .then(function (user) {
+                if (user)
+                    throw new errorModel_1.default(401, "Email is already exist");
+                else
+                    response.status(200).json({ message: "No user found" });
+            })
+                .catch(function (err) { return next(err); })];
+    });
+}); };
 var getAllUsers = function (request, response, next) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         return [2 /*return*/, user_model_1.UserModel.find()
@@ -147,6 +175,8 @@ var deleteUser = function (request, response, next) { return __awaiter(void 0, v
     });
 }); };
 exports.default = {
+    checkUserId: checkUserId,
+    checkUserEmail: checkUserEmail,
     getUser: getUser,
     getAllUsers: getAllUsers,
     register: register,

@@ -4,6 +4,8 @@ import controller from "../controller/user-controller";
 const router = express.Router();
 
 router.get("/single/:id", controller.getUser);
+router.get("/check-user-id/:id", controller.checkUserId);
+router.get("/check-user-email/:email", controller.checkUserEmail);
 router.get("/all", controller.getAllUsers);
 router.post("/all/register", controller.register);
 router.post("/all/login", controller.login);

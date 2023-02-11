@@ -28,13 +28,11 @@ mongoose_1.default
     .catch(function (err) { return console.log(err); });
 dotenv_1.default.config();
 var server = (0, express_1.default)();
-server.use((0, cors_1.default)());
+var corsOptions = {
+    exposedHeaders: "authorization",
+};
+server.use((0, cors_1.default)(corsOptions));
 server.use(express_1.default.json());
-server.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    next();
-});
 server.use("/api/users", user_routes_1.default);
 server.use("/api/categories", category_routes_1.default);
 server.use("/api/items", item_routes_1.default);

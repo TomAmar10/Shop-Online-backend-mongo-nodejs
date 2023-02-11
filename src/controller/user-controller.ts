@@ -52,6 +52,32 @@ const getUser = async (
     })
     .catch((err) => next(err));
 };
+const checkUserId = async (
+  request: Request,
+  response: Response,
+  next: NextFunction
+) => {
+  const id_number = request.params.id;
+  return UserModel.findOne({ id_number })
+    .then((user) => {
+      if (user) throw new ErrorModel(401, "Id is already exist");
+      else response.status(200).json({ message: "No user found" });
+    })
+    .catch((err) => next(err));
+};
+const checkUserEmail = async (
+  request: Request,
+  response: Response,
+  next: NextFunction
+) => {
+  const email = request.params.email;
+  return UserModel.findOne({ email })
+    .then((user) => {
+      if (user) throw new ErrorModel(401, "Email is already exist");
+      else response.status(200).json({ message: "No user found" });
+    })
+    .catch((err) => next(err));
+};
 
 const getAllUsers = async (
   request: Request,
@@ -104,6 +130,8 @@ const deleteUser = async (
 };
 
 export default {
+  checkUserId,
+  checkUserEmail,
   getUser,
   getAllUsers,
   register,
