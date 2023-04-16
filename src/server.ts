@@ -28,7 +28,7 @@ const server = express();
 
 server.use(
   cors({
-    origin: "https://shop-online-ta7.netlify.app",
+    origin: ["https://shop-online-ta7.netlify.app"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     allowedHeaders: ["Content-Type", "Authorization"],
   })
